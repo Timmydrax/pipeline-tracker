@@ -5,6 +5,7 @@ A simple and efficient Chrome Extension to help you track and manage your sales 
 ## 🚀 Features
 
 - Save leads with a single click
+- Save leads on current tab with a single click
 - Add notes and contact info
 - View and manage your lead list
 - Store leads using browser's localStorage
@@ -19,4 +20,26 @@ A simple and efficient Chrome Extension to help you track and manage your sales 
 5. Select the project folder
 6. The extension should now appear in your Chrome toolbar 🎉
 
+## ✍️ Usage
+
+- Click the Lead Tracker icon in your browser
+- Enter lead info and save
+- View saved leads anytime
+- Save leads on current tab
+- All data is stored locally in your browser
+
+## 📌 Notes
+
+- This is a local-only extension; no data is synced to any server.
+- Make sure to back up your leads if needed.
+
+## 💡 Future Improvements
+
+- Sync leads to a cloud database
+- Export leads as CSV
+- Tag and categorize leads
+
+---
+
+Built with ❤️ for hustlers and go-getters.
 
