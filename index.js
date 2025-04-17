@@ -4,20 +4,21 @@ import { getDatabase } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-
 
 // Your web app's Firebase configuration.
 const firebaseConfig = {
-  apiKey: "AIzaSyAToIgJmKEnjOGlktln8tvCbdmJzLYd96A",
+  apiKey: import.meta.env.VITE_API_KEY,
   authDomain: "pipeline-tracker-f4f4f.firebaseapp.com",
   projectId: "pipeline-tracker-f4f4f",
   storageBucket: "pipeline-tracker-f4f4f.firebasestorage.app",
   messagingSenderId: "388244161041",
   appId: "1:388244161041:web:8cfc05e4194ea28f89e7b0",
-  dataBaseURL: "https://pipeline-tracker-f4f4f-default-rtdb.firebaseio.com/",
+  dataBaseURL: import.meta.env.VITE_DATABASE_URL,
 };
 
 // App variable to Initialize Firebase.
 const app = initializeApp(firebaseConfig);
 const dataBase = getDatabase(app);
 
-console.log(dataBase);
+console.log(firebaseConfig.dataBaseURL);
+console.log(firebaseConfig.apiKey);
 
 let myLeads = [];
 const inputEl = document.getElementById("input-el");
