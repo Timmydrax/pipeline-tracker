@@ -17,8 +17,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const dataBase = getDatabase(app);
 
-// console.log(firebaseConfig.dataBaseURL);
-// console.log(firebaseConfig.apiKey);
 
 let myLeads = [];
 const inputEl = document.getElementById("input-el");
