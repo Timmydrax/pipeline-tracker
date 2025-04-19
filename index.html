@@ -9,11 +9,19 @@
     />
   </head>
   <body>
-    <input type="text" id="input-el" />
-    <button id="input-btn">SAVE INPUT</button>
-    <!-- <button id="tab-btn">SAVE TAB</button> -->
-    <button id="delete-btn">DELETE ALL</button>
-    <ul id="ul-el"></ul>
+    <section class="container">
+      <label for="">Enter your URL</label>
+      <input
+        type="text"
+        id="input-el"
+        placeholder="e.g https://www.maseev.net"
+      />
+      <div class="btns">
+        <button id="input-btn">SAVE INPUT</button>
+        <button id="delete-btn">DELETE ALL</button>
+      </div>
+      <ul id="ul-el"></ul>
+    </section>
     <script type="module" src="index.js"></script>
   </body>
 </html>

@@ -4,6 +4,8 @@ import {
   getDatabase,
   ref,
   push,
+  onValue,
+  remove,
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
 // Your web app's Firebase configuration.
@@ -20,55 +22,45 @@ const firebaseConfig = {
 // App variable to Initialize Firebase.
 const app = initializeApp(firebaseConfig);
 const dataBase = getDatabase(app);
-const referenceInDB = ref(dataBase, "trackers");
-
-// let myLeads = [];
+const referenceInDB = ref(dataBase, "leads");
 const inputEl = document.getElementById("input-el");
 const inputBtn = document.getElementById("input-btn");
 const ulEl = document.getElementById("ul-el");
 const deleteBtn = document.getElementById("delete-btn");
-// const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
-// const tabBtn = document.getElementById("tab-btn");
-
-// if (leadsFromLocalStorage) {
-//   myLeads = leadsFromLocalStorage;
-//   render(myLeads);
-// }
-
-// tabBtn.addEventListener("click", function () {
-//   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-//     myLeads.push(tabs[0].url);
-//     localStorage.setItem("myLeads", JSON.stringify(myLeads));
-//     render(myLeads);
-//   });
-// });
 
 function render(leads) {
   let listItems = "";
   for (let i = 0; i < leads.length; i++) {
     listItems += `
-            <li>
-                <a target='_blank' href='${leads[i]}'>
-                    ${leads[i]}
-                </a>
-            </li>
-        `;
+    <li>
+    <a target='_blank' href='${leads[i]}'>
+    ${leads[i]}
+    </a>
+    </li>
+    `;
   }
   ulEl.innerHTML = listItems;
 }
 
+// Firebase onValue function from Database that supports Snapshot..
+onValue(referenceInDB, function (snapshot) {
+  const snapshotDoesExist = snapshot.exists();
+  console.log(snapshotDoesExist);
+
+  if (snapshotDoesExist) {
+    const snapshotValues = snapshot.val();
+    const leads = Object.values(snapshotValues);
+    render(leads);
+  }
+});
+
 deleteBtn.addEventListener("dblclick", function () {
-  // localStorage.clear();
-  // myLeads = [];
-  // render(myLeads);
+  remove(referenceInDB);
+  ulEl.innerHTML = "";
 });
 
 inputBtn.addEventListener("click", function () {
-  // myLeads.push(inputEl.value);
-
-  // The push function (Where to push, The data to be pushed)
+  // The Firebase push function (Where to push, The data to be pushed)
   push(referenceInDB, inputEl.value);
   inputEl.value = "";
-  // localStorage.setItem("myLeads", JSON.stringify(myLeads));
-  // render(myLeads);
 });
