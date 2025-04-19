@@ -1,6 +1,10 @@
 // Firebase CDN.
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+import {
+  getDatabase,
+  ref,
+  push,
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
 // Your web app's Firebase configuration.
 const firebaseConfig = {
@@ -16,7 +20,7 @@ const firebaseConfig = {
 // App variable to Initialize Firebase.
 const app = initializeApp(firebaseConfig);
 const dataBase = getDatabase(app);
-
+const referenceInDB = ref(dataBase, "trackers");
 
 // let myLeads = [];
 const inputEl = document.getElementById("input-el");
@@ -61,6 +65,9 @@ deleteBtn.addEventListener("dblclick", function () {
 
 inputBtn.addEventListener("click", function () {
   // myLeads.push(inputEl.value);
+
+  // The push function (Where to push, The data to be pushed)
+  push(referenceInDB, inputEl.value);
   inputEl.value = "";
   // localStorage.setItem("myLeads", JSON.stringify(myLeads));
   // render(myLeads);
