@@ -1,12 +1,12 @@
 {
-    "manifest_version": 3,
-    "version": "2.0",
-    "name": "Pipeline tracker",
-    "action": {
-        "default_popup": "index.html",
-        "default_icon": "icon.png"
-    },
-    "permissions": [
-        "tabs"
-    ]
+  "manifest_version": 3,
+  "version": "3.0",
+  "name": "Pipeline tracker",
+  "description": "A simple Lead CRM",
+  "author": "Timmy_drax",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "./assets/favicon.png"
+  },
+  "permissions": ["tabs"]
 }
